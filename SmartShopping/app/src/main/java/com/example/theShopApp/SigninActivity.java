@@ -34,6 +34,8 @@ public class SigninActivity extends Activity {
             @Override
             public void onClick(View view) {
 
+                String username = etUsername.getText().toString();
+                String password = etPassword.getText().toString();
             }
         });
 

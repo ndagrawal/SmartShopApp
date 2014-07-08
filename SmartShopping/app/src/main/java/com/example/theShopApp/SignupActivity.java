@@ -13,26 +13,43 @@ import com.example.theShopApp.R;
 public class SignupActivity extends Activity {
 
 
-    EditText etSignUpUserName,etSignUpPassword,etSignUpRePassword,etSignUpEmailId;
+    EditText etSignUpUserName,etSignUpPassword,etSignUpRePassword,etSignUpEmailId,etSignUpFirstName,etSignUpLastName;
     Button bNewAccount;
+
+    public void initialise(){
+        etSignUpUserName = (EditText)findViewById(R.id.etSignupUsername);
+        etSignUpPassword = (EditText)findViewById(R.id.etPassword);
+        etSignUpRePassword = (EditText)findViewById(R.id.etRePassword);
+        etSignUpEmailId = (EditText)findViewById(R.id.etEmailId);
+        etSignUpFirstName = (EditText)findViewById(R.id.etSigninFirstName);
+        etSignUpLastName = (EditText)findViewById(R.id.etSigninLastName);
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.signup);
-
-
-
+        initialise();
 
         bNewAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+            String FirstName = etSignUpFirstName.getText().toString();
+            String LastName = etSignUpLastName.getText().toString();
+            String username = etSignUpUserName.getText().toString();
+            String password = etSignUpPassword.getText().toString();
+            String re_password = etSignUpRePassword.getText().toString();
+            String emailid = etSignUpEmailId.getText().toString();
+
+            Person personObject = new Person(FirstName,LastName,username, emailid,password, re_password);
+
+           // Database.createAccount(personObject);
+
             }
         });
-
-
-
     }
 
 
@@ -54,4 +71,9 @@ public class SignupActivity extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
+
+
 }
+
